@@ -81,10 +81,11 @@
       </li>
       {{ end }}
 
-      <div class="menu-bottom-section">
+      <li class="menu-bottom-section">
+        <ol>
           {{- $currentLanguageCode := .Language.Lang -}}
           {{ with .Site.Home.AllTranslations }}
-              <li id="i18n-switch">  
+              <li id="i18n-switch">
                   {{ partial "helper/icon" "language" }}
                   <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                       {{ range . }}
@@ -101,6 +102,7 @@
                   <span>{{ T "darkMode" }}</span>
               </li>
           {{ end }}
-      </div>
+        </ol>
+      </li>
   </ol>
 </aside>
