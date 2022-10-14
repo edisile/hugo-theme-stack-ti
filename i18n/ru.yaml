@@ -23,7 +23,9 @@ list:
 article:
     back:
         other: Назад
-    relatedContent:
+    authors:
+        other: Авторы
+    relatedContents:
         other: Также рекомендуем
     lastUpdatedOn:
         other: Обновлено

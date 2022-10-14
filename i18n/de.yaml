@@ -23,7 +23,10 @@ article:
     tableOfContents:
         other: Inhaltsverzeichnis
 
-    relatedContent:
+    authors:
+        other: Autoren
+
+    relatedContents:
         other: Verwandte Inhalte
 
     lastUpdatedOn:

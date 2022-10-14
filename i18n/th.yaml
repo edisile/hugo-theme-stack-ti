@@ -20,6 +20,9 @@ article:
     back:
         other: กลับไป
 
+    authors:
+        other: ผู้เขียน
+
     tableOfContents:
         other: สารบัญ
 

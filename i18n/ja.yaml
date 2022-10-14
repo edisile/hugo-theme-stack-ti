@@ -11,7 +11,10 @@ article:
     tableOfContents:
         other: 目次
 
-    relatedContent:
+    authors:
+        other: 著者
+
+    relatedContents:
         other: 関連するコンテンツ
 
     lastUpdatedOn:

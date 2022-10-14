@@ -20,6 +20,9 @@ article:
     back:
         other: Πισω
 
+    authors:
+        other: Συγγραφείς
+
     tableOfContents:
         other: Πινακας περιεχομενων
 

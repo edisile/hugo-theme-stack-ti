@@ -17,7 +17,9 @@ list:
         other: Subsecties
 
 article:
-    relatedContent:
+    authors:
+        other: Auteurs
+    relatedContents:
         other: Gerelateerde inhoud
     lastUpdatedOn:
         other: Laatst bijgewerkt op

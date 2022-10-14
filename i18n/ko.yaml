@@ -20,6 +20,9 @@ article:
     back:
         other: 뒤로가기
 
+    authors:
+        other: 저자
+
     tableOfContents:
         other: 목차
         

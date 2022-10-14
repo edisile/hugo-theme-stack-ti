@@ -23,7 +23,10 @@ article:
     tableOfContents:
         other: Indice
 
-    relatedContent:
+    authors:
+        other: Autori
+
+    relatedContents:
         other: Contenuti correlati
 
     lastUpdatedOn:

@@ -21,6 +21,9 @@ article:
     back:
         other: Назад
 
+    authors:
+        other: Автори
+
     tableOfContents:
         other: Зміст
 

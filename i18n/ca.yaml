@@ -20,6 +20,9 @@ article:
     back:
         other: Tornar
 
+    authors:
+        other: Autors
+
     tableOfContents:
         other: Taula de contingut
 

@@ -8,6 +8,9 @@ article:
     back:
         other: 返回
 
+    authors:
+        other: 作者
+
     tableOfContents:
         other: 目录
 

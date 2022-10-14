@@ -20,6 +20,9 @@ article:
     back:
         other: خلف
 
+    authors:
+        other: مؤلف
+
     tableOfContents:
         other: جدول المحتويات
 

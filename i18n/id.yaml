@@ -20,6 +20,9 @@ article:
     back:
         other: Kembali
 
+    authors:
+        other: Pengarang
+
     tableOfContents:
         other: Daftar Isi
 
