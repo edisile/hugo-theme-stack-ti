@@ -1,0 +1,13 @@
+{{ define "body-class" }}authors-page template-archives{{ end }}
+
+{{ define "main" }}
+    {{ range .Data.Pages }}
+        {{ partial "author/author-card-compact" . }}
+    {{ end }}
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

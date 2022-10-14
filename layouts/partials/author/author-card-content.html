@@ -1,0 +1,26 @@
+{{- $image := partialCached "helper/image" (dict "Context" . "Type" "author") .RelPermalink "author" -}}
+
+{{ if $image.exists }}
+  <a class="author-photo" href="{{ .Permalink }}" class="block-link">
+    {{ $optimized := $image.resource.Resize (printf "%dx jpeg q85" $image.resource.Width) }}
+    {{ $thumbnail := $image.resource.Resize "100x jpeg q85" }}
+    {{ $srcset := printf "%s 100w, %s %dw" $thumbnail.RelPermalink $optimized.RelPermalink $optimized.Width}}
+
+    <img
+      src="{{ $optimized.RelPermalink }}"
+      srcset="{{ $srcset }}"
+      alt="{{ .Params.title }}"
+      loading="lazy"
+    />
+  </a>
+{{ end }}
+
+<div class="author-data">
+  <a href="{{ .Permalink }}" class="author-name block-link">
+    <h1>{{ .Params.title }}</h1>
+  </a>
+  
+  <div class="author-bio">
+    {{ .Content }}
+  </div>
+</div>

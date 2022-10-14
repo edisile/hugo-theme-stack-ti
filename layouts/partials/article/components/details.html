@@ -23,8 +23,19 @@
         {{ end }}
     </div>
 
-    {{ if or (not .Date.IsZero) (.Site.Params.article.readingTime) }}
+  {{ if or (or (not .Date.IsZero) (.Site.Params.article.readingTime)) .Params.authors }}
     <footer class="article-time">
+      {{if .Params.authors}}
+        <div>
+          {{ partial "helper/icon" "user" }}
+          {{ range .Params.authors }}
+            {{- with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) }}
+              {{ partial "author/author-link" . }}
+            {{ end }}
+          {{ end }}
+        </div>
+      {{ end }}
+        
         {{ if not .Date.IsZero }}
             <div>
                 {{ partial "helper/icon" "date" }}

@@ -1,11 +1,22 @@
 <article class="{{ if .Params.image }}has-image {{ end }}main-article">
-    {{ partial "article/components/header" . }}
+  {{ partial "article/components/header" . }}
 
-    {{ partial "article/components/content" . }}
+  {{ partial "article/components/content" . }}
 
-    {{ partial "article/components/footer" . }}
+  {{ partial "article/components/footer" . }}
 
-    {{ if or .Params.math .Site.Params.article.math }}
-        {{ partialCached "article/components/math.html" . }}
-    {{ end }}
+  {{ if or .Params.math .Site.Params.article.math }}
+      {{ partialCached "article/components/math.html" . }}
+  {{ end }}
 </article>
+
+{{ if .Params.authors }}
+  <aside class="author-card--wrapper">
+    <h2 class="section-title">{{ T "article.authors" }}</h2>
+    {{ range .Params.authors }}
+      {{- with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) }}
+        {{ partial "author/author-card-compact" . }}
+      {{ end }}
+    {{ end }}
+  </aside>
+{{ end }}
