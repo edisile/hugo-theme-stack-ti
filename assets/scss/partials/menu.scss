@@ -147,11 +147,7 @@
 
     &,
     .menu-bottom-section ol {
-        display: flex;
-        flex-direction: column;
         gap: 30px;
-        padding-left: 0;
-
         @include respond(xl) {
             gap: 25px;
         }
@@ -208,7 +204,13 @@
 
     .menu-bottom-section {
         margin-top: auto;
-        width: 100%;
+
+        ol {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-left: 0;
+        }
     }
 }
 
