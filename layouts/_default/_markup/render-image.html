@@ -9,33 +9,44 @@
 {{- $galleryImage := false -}}
 
 {{- if $image -}}
-	{{- $notSVG := ne (path.Ext .Destination) ".svg" -}}
-	{{- $Permalink = $image.RelPermalink -}}
+  {{- $notSVG := ne (path.Ext .Destination) ".svg" -}}
+  {{- $Permalink = $image.RelPermalink -}}
 
-	{{- if $notSVG -}}
-		{{- $Width = $image.Width -}}
-		{{- $Height = $image.Height -}}
-		{{- $galleryImage = true -}}
+  {{- if $notSVG -}}
+    {{- $Width = $image.Width -}}
+    {{- $Height = $image.Height -}}
+    {{- $galleryImage = true -}}
 
-		{{- if (default true .Page.Site.Params.imageProcessing.content.enabled) -}}
-			{{- $small := $image.Resize `480x` -}}
-			{{- $big := $image.Resize `1024x` -}}
-			{{- $Srcset = printf `%s 480w, %s 1024w` $small.RelPermalink $big.RelPermalink -}}
-		{{- end -}}
-	{{- end -}}
+    {{- if (default true .Page.Site.Params.imageProcessing.content.enabled) -}}
+      {{- $fullSize := $image.Resize (printf "%dx jpeg q85" $Width) -}}
+
+      {{- $small := $fullSize -}}
+      {{ if gt $Width 480 }}
+        {{- $small = $image.Resize "480x jpeg" -}}
+      {{ end }}
+
+      {{- $big := $fullSize -}}
+      {{ if gt $Width 1024 }}
+        {{- $big = $image.Resize "1024x jpeg" -}}
+      {{ end }}
+
+      {{- $Srcset = printf "%s %dw, %s %dw" $small.RelPermalink $small.Width $big.RelPermalink $big.Width -}}
+      {{- $Permalink = $fullSize.RelPermalink -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 
 <img src="{{ $Permalink }}"
-	{{ with $Width }}width="{{ . }}"{{ end }}
-	{{ with $Height }}height="{{ . }}"{{ end }}
-	{{ with $Srcset }}srcset="{{ . }}"{{ end }}
-	loading="lazy"
-	{{ with $alt }}
-		alt="{{ . }}"
-	{{ end }}
-	{{ if $galleryImage }}
-		class="gallery-image" 
-		data-flex-grow="{{ div (mul $image.Width 100) $image.Height }}"
-		data-flex-basis="{{ div (mul $image.Width 240) $image.Height }}px"
-	{{ end }}
+  {{ with $Width }}width="{{ . }}"{{ end }}
+  {{ with $Height }}height="{{ . }}"{{ end }}
+  {{ with $Srcset }}srcset="{{ . }}"{{ end }}
+  loading="lazy"
+  {{ with $alt }}
+    alt="{{ . }}"
+  {{ end }}
+  {{ if $galleryImage }}
+    class="gallery-image" 
+    data-flex-grow="{{ div (mul $Width 100) $image.Height }}"
+    data-flex-basis="{{ div (mul $Width 240) $image.Height }}px"
+  {{ end }}
 >
