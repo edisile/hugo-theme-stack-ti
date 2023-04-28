@@ -17,7 +17,7 @@
               
               {{ if $avatar }}
                 {{ if eq $avatar.MediaType.SubType "svg" }}
-                  <img src="{{ $avatar.RelPermalink }}" class="site-logo" loading="lazy" alt="Avatar">
+                  <div class="site-logo">{{ $avatar.Content | safeHTML }}</div>
                 {{ else }}
                   {{ $avatarResized := $avatar.Resize "200x" }}
                   <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
