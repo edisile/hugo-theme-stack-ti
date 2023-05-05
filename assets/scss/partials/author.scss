@@ -1,0 +1,112 @@
+.author-card {
+  display: flex;
+  background-color: var(--card-background);
+  box-shadow: var(--shadow-l1);
+  border-radius: var(--card-border-radius);
+  transition: box-shadow 0.3s ease;
+  padding: var(--small-card-padding);
+  gap: var(--card-padding);
+  flex-direction: column;
+
+  @include respond(md) {
+    flex-direction: row;
+  }
+
+  .author-photo {
+    display: flex;
+    justify-content: center;
+
+    svg,
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      box-shadow: var(--shadow-l1);
+      background-color: var(--card-background-selected);
+
+      @include respond(md) {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    svg {
+      padding: 24px;
+    }
+  }
+
+  .author-data {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .author-name h2 {
+      color: var(--card-text-color-main);
+      margin: 0;
+      font-size: 2.2rem;
+      text-align: center;
+
+      @include respond(xl) {
+        font-size: 2.4rem;
+        text-align: unset;
+      }
+    }
+
+    .author-bio {
+      p {
+        margin: 0;
+        color: var(--card-text-color-main);
+        font-size: var(--article-font-size);
+        line-height: var(--article-line-height);
+      }
+    }
+  }
+
+  &--compact {
+    @extend .author-card;
+    flex-direction: row;
+    align-items: center;
+
+    .author-photo {
+      svg,
+      img {
+        @include respond(md) {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    }
+
+    .author-data {
+      gap: 10px;
+
+      .author-name h2 {
+        font-size: 1.6rem;
+        text-align: unset;
+
+        @include respond(xl) {
+          font-size: 1.8rem;
+        }
+      }
+
+      .author-bio {
+        p {
+          $font-size: 1.4rem;
+          $line-height: 1.5;
+          margin: 0;
+          color: var(--card-text-color-secondary);
+          font-size: $font-size;
+          line-height: $line-height;
+
+          $lines: 3;
+          max-height: calc(#{$lines} * #{$line-height} * #{$font-size});
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: $lines;
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
+  }
+}
