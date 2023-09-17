@@ -24,9 +24,9 @@
                         {{ if $image.resource }}
                             {{- $thumbnail := $image.resource.Resize "60x" -}}
                             {{- $Permalink := $thumbnail.RelPermalink -}}
-                            <img src="{{ $Permalink }}" loading="lazy"/>
+                            <img src="{{ $Permalink }}" loading="lazy" alt="Featured image of post {{ $link.title }}" />
                         {{else}}
-                            <img src="{{ $image.permalink }}" loading="lazy"/>
+                            <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ $link.title }}" />
                         {{ end }}
                     </div>
                 {{ end }}
