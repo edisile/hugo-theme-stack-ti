@@ -20,13 +20,14 @@
                 {{ $context := (dict "Context" (dict "Params" $link "Resources" $resources)) }}
                 {{- $image := partialCached "helper/image" $context $link.website "link" -}}
                 {{ if $image.exists }}
+                    {{- $Featured := T "article.featuredImage" -}}
                     <div class="article-image">
                         {{ if $image.resource }}
                             {{- $thumbnail := $image.resource.Resize "60x" -}}
                             {{- $Permalink := $thumbnail.RelPermalink -}}
-                            <img src="{{ $Permalink }}" loading="lazy" alt="Featured image of post {{ $link.title }}" />
+                            <img src="{{ $Permalink }}" loading="lazy" alt="{{ $Featured }} {{ $link.title }}" />
                         {{else}}
-                            <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ $link.title }}" />
+                            <img src="{{ $image.permalink }}" loading="lazy" alt="{{ $Featured }} {{ $link.title }}" />
                         {{ end }}
                     </div>
                 {{ end }}

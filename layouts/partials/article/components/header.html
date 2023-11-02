@@ -18,14 +18,16 @@
                         {{- $Height = $thumbnail.Height -}}
                     {{- end -}}
 
+                    {{- $Featured := T "article.featuredImage" -}}
+
                     <img src="{{ $Permalink }}"
                         {{ with $Srcset }}srcset="{{ . }}"{{ end }}
                         width="{{ $Width }}" 
                         height="{{ $Height }}" 
                         loading="lazy"
-                        alt="Featured image of post {{ .Title }}" />
+                        alt="{{ $Featured }} {{ .Title }}" />
                 {{ else }}
-                    <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
+                    <img src="{{ $image.permalink }}" loading="lazy" alt="{{ $Featured }} {{ .Title }}" />
                 {{ end }}
             </a>
         </div>

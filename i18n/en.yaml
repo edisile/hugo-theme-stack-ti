@@ -20,6 +20,9 @@ article:
     back:
         other: Back
 
+    featuredImage:
+        other: Featured image of post
+
     tableOfContents:
         other: Table of contents
 

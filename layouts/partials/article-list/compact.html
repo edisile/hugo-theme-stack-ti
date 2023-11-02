@@ -13,6 +13,7 @@
 
         {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
         {{ if $image.exists }}
+            {{- $Featured := T "article.featuredImage" -}}
             <div class="article-image">
                 {{ if $image.resource }}
                     {{- $Permalink := $image.resource.RelPermalink -}}
@@ -29,10 +30,10 @@
                     <img src="{{ $Permalink }}" 
                         width="{{ $Width }}"
                         height="{{ $Height }}" 
-                        alt="{{ .Title }}"
+                        alt="{{ $Featured }} {{ .Title }}"
                         loading="lazy">
                 {{ else }}
-                    <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
+                    <img src="{{ $image.permalink }}" loading="lazy" alt="{{ $Featured }} {{ .Title }}" />
                 {{ end }}
             </div>
         {{ end }}

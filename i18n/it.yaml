@@ -1,8 +1,8 @@
 toggleMenu:
-    other: Toggle Menu
+    other: Mostra menù
 
 darkMode:
-    other: Dark Mode
+    other: Tema scuro
 
 list:
     page:
@@ -19,6 +19,9 @@ list:
 article:
     back:
         other: Indietro
+
+    featuredImage:
+        other: Immagine di copertina del post
 
     tableOfContents:
         other: Indice

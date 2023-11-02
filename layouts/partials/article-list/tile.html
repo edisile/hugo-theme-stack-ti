@@ -3,6 +3,8 @@
     <a href="{{ .context.RelPermalink }}">
         
         {{ if $image.exists }}
+            {{- $Featured := T "article.featuredImage" -}}
+
             <div class="article-image">
                 {{ if $image.resource }}
                     {{- $imageRaw := $image.resource | resources.Fingerprint "md5" -}}
@@ -21,11 +23,15 @@
                         width="{{ $Width }}" 
                         height="{{ $Height }}" 
                         loading="lazy"
-                        alt="Featured image of post {{ .context.Title }}"
+                        alt="{{ $Featured }} {{ .context.Title }}"
                         {{ with .context.Slug }}data-key="{{ . }}" {{ end }}
-                        data-hash="{{ $imageRaw.Data.Integrity }}">
+                        data-hash="{{ $imageRaw.Data.Integrity }}" />
                 {{ else }}
-                    <img src="{{ $image.permalink }}" loading="lazy" data-key="{{ .context.Slug }}" data-hash="{{ $image.permalink }}"/>
+                    <img src="{{ $image.permalink }}" 
+                        loading="lazy" 
+                        alt="{{ $Featured }} {{ .context.Title }}" 
+                        data-key="{{ .context.Slug }}" 
+                        data-hash="{{ $image.permalink }}"/>
                 {{ end }}
             </div>
         {{ end }}
