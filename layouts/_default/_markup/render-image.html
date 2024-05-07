@@ -26,8 +26,8 @@
       {{ end }}
 
       {{- $big := $fullSize -}}
-      {{ if gt $Width 1024 }}
-        {{- $big = $image.Resize "1024x jpeg" -}}
+      {{ if gt $Width 2048 }}
+        {{- $big = $image.Resize "2048x jpeg" -}}
       {{ end }}
 
       {{- $Srcset = printf "%s %dw, %s %dw" $small.RelPermalink $small.Width $big.RelPermalink $big.Width -}}
