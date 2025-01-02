@@ -85,14 +85,16 @@
       <ol>
         {{- $currentLanguageCode := .Language.Lang -}}
         {{ with .Site.Home.AllTranslations }}
-          <li id="i18n-switch">
-            {{ partial "helper/icon" "language" }}
-            <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-              {{ range . }}
-                <option value="{{ .RelPermalink }}" {{ if eq .Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
-              {{ end }}
-            </select>
-          </li>
+          {{ if gt (len .) 1}}
+            <li id="i18n-switch">
+              {{ partial "helper/icon" "language" }}
+              <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                {{ range . }}
+                  <option value="{{ .RelPermalink }}" {{ if eq .Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
+                {{ end }}
+              </select>
+            </li>
+          {{ end }}
         {{ end }}
         
         {{ if (default false .Site.Params.colorScheme.toggle) }}
