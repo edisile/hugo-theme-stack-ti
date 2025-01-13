@@ -1,3 +1,5 @@
+{{- $Featured := T "article.featuredImage" -}}
+
 <header class="article-header">
     {{- $image := partialCached "helper/image" (dict "Context" . "Type" "article") .RelPermalink "article" -}}
     {{ if $image.exists }}
@@ -17,8 +19,6 @@
                         {{- $Width = $thumbnail.Width -}}
                         {{- $Height = $thumbnail.Height -}}
                     {{- end -}}
-
-                    {{- $Featured := T "article.featuredImage" -}}
 
                     <img src="{{ $Permalink }}"
                         {{ with $Srcset }}srcset="{{ . }}"{{ end }}
